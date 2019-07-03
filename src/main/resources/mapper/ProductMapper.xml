@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.my.tmall.mapper.ProductMapper">
+  <resultMap id="BaseResultMap" type="com.my.tmall.pojo.Product">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="subTitle" jdbcType="VARCHAR" property="subtitle" />
+    <result column="originalPrice" jdbcType="FLOAT" property="originalprice" />
+    <result column="promotePrice" jdbcType="FLOAT" property="promoteprice" />
+    <result column="stock" jdbcType="INTEGER" property="stock" />
+    <result column="cid" jdbcType="INTEGER" property="cid" />
+    <result column="createDate" jdbcType="TIMESTAMP" property="createdate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, `name`, subTitle, originalPrice, promotePrice, stock, cid, createDate
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from product
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from product
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.my.tmall.pojo.Product" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into product (`name`, subTitle, originalPrice, 
+      promotePrice, stock, cid, 
+      createDate)
+    values (#{name,jdbcType=VARCHAR}, #{subtitle,jdbcType=VARCHAR}, #{originalprice,jdbcType=FLOAT}, 
+      #{promoteprice,jdbcType=FLOAT}, #{stock,jdbcType=INTEGER}, #{cid,jdbcType=INTEGER}, 
+      #{createdate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.my.tmall.pojo.Product" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into product
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="subtitle != null">
+        subTitle,
+      </if>
+      <if test="originalprice != null">
+        originalPrice,
+      </if>
+      <if test="promoteprice != null">
+        promotePrice,
+      </if>
+      <if test="stock != null">
+        stock,
+      </if>
+      <if test="cid != null">
+        cid,
+      </if>
+      <if test="createdate != null">
+        createDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="subtitle != null">
+        #{subtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="originalprice != null">
+        #{originalprice,jdbcType=FLOAT},
+      </if>
+      <if test="promoteprice != null">
+        #{promoteprice,jdbcType=FLOAT},
+      </if>
+      <if test="stock != null">
+        #{stock,jdbcType=INTEGER},
+      </if>
+      <if test="cid != null">
+        #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.my.tmall.pojo.Product">
+    <!--@mbg.generated-->
+    update product
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="subtitle != null">
+        subTitle = #{subtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="originalprice != null">
+        originalPrice = #{originalprice,jdbcType=FLOAT},
+      </if>
+      <if test="promoteprice != null">
+        promotePrice = #{promoteprice,jdbcType=FLOAT},
+      </if>
+      <if test="stock != null">
+        stock = #{stock,jdbcType=INTEGER},
+      </if>
+      <if test="cid != null">
+        cid = #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="createdate != null">
+        createDate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.my.tmall.pojo.Product">
+    <!--@mbg.generated-->
+    update product
+    set `name` = #{name,jdbcType=VARCHAR},
+      subTitle = #{subtitle,jdbcType=VARCHAR},
+      originalPrice = #{originalprice,jdbcType=FLOAT},
+      promotePrice = #{promoteprice,jdbcType=FLOAT},
+      stock = #{stock,jdbcType=INTEGER},
+      cid = #{cid,jdbcType=INTEGER},
+      createDate = #{createdate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
